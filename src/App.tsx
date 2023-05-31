@@ -2,7 +2,7 @@ import * as Popover from '@radix-ui/react-popover';
 import { ClipboardText } from 'phosphor-react';
 import { useState } from 'react';
 import './App.css';
-import logo from '/logo.svg';
+import logo2 from '/logo2.svg';
 
 
 interface SubstituicaoCaracteres {
@@ -130,7 +130,7 @@ export default function Home() {
   <Popover.Root>
   <main>
     <div className='logo'>
-      <img src={logo} />
+      <img src={logo2} />
     </div>  
 
     <h3>Substitua as letras do seu texto por emojis</h3>
