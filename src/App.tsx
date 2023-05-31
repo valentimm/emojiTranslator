@@ -1,3 +1,5 @@
+import * as Popover from '@radix-ui/react-popover';
+import { ClipboardText } from 'phosphor-react';
 import { useState } from 'react';
 import './App.css';
 
@@ -14,6 +16,21 @@ function substituirCaracteres({ texto, substituicoes }: SubstituicaoCaracteres):
     textoModificado = textoModificado.replace(regex, caractereNovo);
   }
   return textoModificado;
+}
+
+function copyText (){
+  const text = document.querySelector('#textResponse p')?.textContent;
+  if(text){
+    navigator.clipboard.writeText(text);
+  }
+}
+
+function copyTextDiv(){
+  const text = document.querySelector('#textResponse p')?.textContent;
+  if(text){
+    navigator.clipboard.writeText(text);
+  }
+  
 }
 
 export default function Home() {
@@ -96,22 +113,35 @@ export default function Home() {
   };
 
   return (
-<main>
-  <div className="content">
+  <Popover.Root>
+  <main>
     <h1>Tradutor de texto para emojis</h1>
     <h3>Substitua as letras do seu texto por emojis</h3>
-    <div id="textUser">
-    <textarea
-      value={textoOriginal}
-      onChange={(e) => setTextoOriginal(e.target.value)}
-      placeholder='Digite o texto aqui'
-    />
+    <div className="content">
+      <div id="textUser">
+        <textarea
+          value={textoOriginal}
+          onChange={(e) => setTextoOriginal(e.target.value)}
+          placeholder='Digite o texto aqui'
+        />
+      </div>
+      <button onClick={substituirTexto}>Traduzir</button>
+      <div id="textResponse" onClick={copyTextDiv}>
+        <p>{textoModificado}</p>
+        <Popover.Trigger onClick={copyText} className='PopoverTrigger'>
+          <div>
+            <ClipboardText size={16} color="#ffffff" weight="fill" />
+          </div>
+        </Popover.Trigger>
+        <Popover.Portal>
+        <Popover.Content className='PopoverContent'>
+          Texto copiado!
+        <Popover.Arrow className='PopoverArrow' />
+        </Popover.Content>
+        </Popover.Portal>
+      </div>
     </div>
-    <button onClick={substituirTexto}>Traduzir</button>
-    <div className="textResponse">
-      <p>{textoModificado}</p>
-    </div>
-  </div>
-    </main>
+  </main>
+  </Popover.Root>
   )
 }
