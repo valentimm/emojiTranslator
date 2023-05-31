@@ -2,6 +2,8 @@ import * as Popover from '@radix-ui/react-popover';
 import { ClipboardText } from 'phosphor-react';
 import { useState } from 'react';
 import './App.css';
+import logo from '/logo.svg';
+
 
 interface SubstituicaoCaracteres {
   texto: string;
@@ -12,10 +14,14 @@ function substituirCaracteres({ texto, substituicoes }: SubstituicaoCaracteres):
   let textoModificado = texto;
   for (const caractereAntigo in substituicoes) {
     const caractereNovo = substituicoes[caractereAntigo];
-    const regex = new RegExp(caractereAntigo, 'g');
+    const regex = new RegExp(escapeRegExp(caractereAntigo), 'g');
     textoModificado = textoModificado.replace(regex, caractereNovo);
   }
   return textoModificado;
+}
+
+function escapeRegExp(string: string): string {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function copyText (){
@@ -100,6 +106,14 @@ export default function Home() {
     8: '8️⃣',
     9: '9️⃣',
     '!': '❗️',
+    '?': '❓',
+    '#': '#️⃣',
+    '*': '*️⃣',
+    '+': '➕',
+    '-': '➖',
+    '.': '⏺️',
+    
+
   });
 
   const substituirTexto = () => {
@@ -115,7 +129,10 @@ export default function Home() {
   return (
   <Popover.Root>
   <main>
-    <h1>Tradutor de texto para emojis</h1>
+    <div className='logo'>
+      <img src={logo} />
+    </div>  
+
     <h3>Substitua as letras do seu texto por emojis</h3>
     <div className="content">
       <div id="textUser">
