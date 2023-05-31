@@ -38,6 +38,7 @@ main {
   background-color: #1a1a1a;
   cursor: pointer;
   padding-left: 1rem;
+  border-radius: 6px;
 }
 
   img {
@@ -148,6 +149,7 @@ button:focus-visible {
     max-width: 22rem;
     overflow: scroll;
     margin-left: 1rem;
+    
   }
   
   textarea {
