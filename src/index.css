@@ -111,6 +111,7 @@ button:focus-visible {
 
 @media only screen and (max-width: 600px) {
   main {
+    display: block;
     padding-right: 2rem;
     margin-left: -11rem;
   }
@@ -120,27 +121,33 @@ button:focus-visible {
   }
   .content {
     grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
   }
   
   #textUser {
     grid-column: 1;
     grid-row: 1;
+    width: 22rem;
   }
   
   #textResponse {
     grid-column: 1;
     grid-row: 2;
-    width: 100%;
     min-height: 8rem;
+    max-height: 20rem;
     max-width: 22rem;
+    overflow: scroll;
   }
   
   textarea {
-    width: 100%;
+    width: 22rem;
     height: 8rem;
   }
   
   button {
-    width: 100%;
+    width: 12rem;
   }
 }
