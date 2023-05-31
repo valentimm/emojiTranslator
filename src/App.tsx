@@ -112,8 +112,7 @@ export default function Home() {
     '+': '➕',
     '-': '➖',
     '.': '⏺️',
-    
-
+    ' ': '    ',
   });
 
   const substituirTexto = () => {
@@ -143,7 +142,7 @@ export default function Home() {
         />
       </div>
       <button onClick={substituirTexto}>Traduzir</button>
-      <div id="textResponse" onClick={copyTextDiv}>
+      <div id="textResponse" style={{ whiteSpace: 'pre-wrap' }} onClick={copyTextDiv}>
         <p>{textoModificado}</p>
         <Popover.Trigger onClick={copyText} className='PopoverTrigger'>
           <div>
