@@ -115,7 +115,7 @@ button:focus-visible {
   .logo {
     display: flex;
     justify-content: center;
-    margin-top: 10rem;
+    margin-top: 6rem;
     padding-bottom: 2rem;
   }
   img {

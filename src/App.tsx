@@ -29,8 +29,8 @@ function copyText (){
   if(text){
     navigator.clipboard.writeText(text);
   }
+  
 }
-
 function copyTextDiv(){
   const text = document.querySelector('#textResponse p')?.textContent;
   if(text){
